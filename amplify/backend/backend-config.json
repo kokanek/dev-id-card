@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "devidcarde9a855e1": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
