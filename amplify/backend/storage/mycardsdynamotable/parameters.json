@@ -1,0 +1,5 @@
+{
+    "tableName": "mycardsdynamotable",
+    "partitionKeyName": "user",
+    "partitionKeyType": "S"
+}

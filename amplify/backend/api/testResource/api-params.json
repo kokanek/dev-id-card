@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/test",
+            "lambdaFunction": "testLamda",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/test"
+        }
+    ],
+    "resourceName": "testResource",
+    "apiName": "testResource",
+    "functionArns": [
+        {
+            "lambdaFunction": "testLamda"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-amplifyab9a528e300c4-staging-111334-authRole",
+        "unAuthRoleName": "amplify-amplifyab9a528e300c4-staging-111334-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "testLamda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

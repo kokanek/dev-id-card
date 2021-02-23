@@ -14,6 +14,20 @@
     "categories": {
       "auth": {
         "devidcarde9a855e1": {}
+      },
+      "function": {
+        "devidcardffa8ae9c": {
+          "deploymentBucketName": "amplify-amplifyab9a528e300c4-staging-111334-deployment",
+          "s3Key": "amplify-builds/devidcardffa8ae9c-7371463838454a4c5074-build.zip"
+        },
+        "mycardslambdafunction": {
+          "deploymentBucketName": "amplify-amplifyab9a528e300c4-staging-111334-deployment",
+          "s3Key": "amplify-builds/mycardslambdafunction-7034684b4a4a646d7561-build.zip"
+        },
+        "testLamda": {
+          "deploymentBucketName": "amplify-amplifyab9a528e300c4-staging-111334-deployment",
+          "s3Key": "amplify-builds/testLamda-46354d47425a54784163-build.zip"
+        }
       }
     }
   }

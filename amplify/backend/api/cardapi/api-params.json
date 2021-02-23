@@ -1,0 +1,42 @@
+{
+    "paths": [
+        {
+            "name": "/cards",
+            "lambdaFunction": "devidcardffa8ae9c",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/cards"
+        }
+    ],
+    "resourceName": "cardapi",
+    "apiName": "cardapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "devidcardffa8ae9c"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-amplifyab9a528e300c4-staging-111334-authRole",
+        "unAuthRoleName": "amplify-amplifyab9a528e300c4-staging-111334-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "devidcardffa8ae9c",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

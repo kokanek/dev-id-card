@@ -1,0 +1,42 @@
+{
+    "paths": [
+        {
+            "name": "/mycards",
+            "lambdaFunction": "mycardslambdafunction",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/mycards"
+        }
+    ],
+    "resourceName": "newcardapi",
+    "apiName": "newcardapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "mycardslambdafunction"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-amplifyab9a528e300c4-staging-111334-authRole",
+        "unAuthRoleName": "amplify-amplifyab9a528e300c4-staging-111334-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "mycardslambdafunction",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
