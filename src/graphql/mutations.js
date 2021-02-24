@@ -9,7 +9,14 @@ export const createCard = /* GraphQL */ `
     createCard(input: $input, condition: $condition) {
       id
       name
+      userId
       description
+      tags
+      position
+      Links {
+        name
+        link
+      }
       createdAt
       updatedAt
     }
@@ -23,7 +30,14 @@ export const updateCard = /* GraphQL */ `
     updateCard(input: $input, condition: $condition) {
       id
       name
+      userId
       description
+      tags
+      position
+      Links {
+        name
+        link
+      }
       createdAt
       updatedAt
     }
@@ -37,7 +51,14 @@ export const deleteCard = /* GraphQL */ `
     deleteCard(input: $input, condition: $condition) {
       id
       name
+      userId
       description
+      tags
+      position
+      Links {
+        name
+        link
+      }
       createdAt
       updatedAt
     }

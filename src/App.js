@@ -11,19 +11,22 @@ const initialFormState = { name: '', description: '' }
 function App() {
   const [notes, setNotes] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
+  const [user, setUser] = useState();
 
   useEffect(() => {
     Auth.currentUserInfo()
-      .then(data => console.log('logged in user info', data))
-      .catch(err => console.log('error while fetching logged in user', err));
-
-    fetchNotes();
+      .then(userData => {
+        console.log('userData: ', userData);
+        setUser(userData.id);
+        fetchNotes(userData.id);
+      })
   }, []);
 
-  async function fetchNotes() {
+  async function fetchNotes(id) {
+    console.log('fetch notes for id: ', id);
     let filter = {
-      name: {
-        eq: 'test'
+      userId: {
+        eq: id
       }
     };
     const apiData = await API.graphql({ query: listCards, variables: { filter: filter} });
@@ -32,9 +35,43 @@ function App() {
   }
 
   async function createNote() {
-    if (!formData.name || !formData.description) return;
-    await API.graphql({ query: createCardMutation, variables: { input: formData } });
-    setNotes([ ...notes, formData ]);
+    console.log('reached crete function: ');
+    console.log('creting note for user: ', user);
+    const cardData = {
+      name: 'Other Coder',
+      userId: user,
+      description: 'Coder by day, content creator by night',
+      position: 'Tech Lead',
+      tags: ['javascript','react.js', 'node.js', 'angular'],
+      Links: [
+        {
+          name: 'Twitter',
+          link: 'https://twitter.com/Kokaneka'
+        },
+        {
+          name: 'Linkedin',
+          link: 'https://www.linkedin.com/in/kapeel-kokane-30b81973/'
+        },
+        {
+          name: 'YouTube',
+          link: 'https://bit.ly/CsSimpl'
+        },
+        {
+          name: 'Blog',
+          link: 'https://dev.to/comscience'
+        },
+        {
+          name: 'Portfolio',
+          link: 'http://comscience.now.sh/'
+        },
+        {
+          name: 'Github',
+          link: 'http://github.com/kokanek'
+        },
+      ]
+    }
+    await API.graphql({ query: createCardMutation, variables: { input: cardData } });
+    setNotes([ ...notes, cardData ]);
     setFormData(initialFormState);
   }
 
@@ -74,6 +111,7 @@ function App() {
           value={formData.description}
         /> */}
         
+        <hr />
         <div class="row flex-spaces child-borders">
           <label class="paper-btn margin btn-danger" for="modal-1">Sign Out</label>
         </div>

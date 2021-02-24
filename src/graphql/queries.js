@@ -6,13 +6,19 @@ export const getCard = /* GraphQL */ `
     getCard(id: $id) {
       id
       name
+      userId
       description
+      tags
+      position
+      Links {
+        name
+        link
+      }
       createdAt
       updatedAt
     }
   }
 `;
-
 export const listCards = /* GraphQL */ `
   query ListCards(
     $filter: ModelCardFilterInput
@@ -23,7 +29,14 @@ export const listCards = /* GraphQL */ `
       items {
         id
         name
+        userId
         description
+        tags
+        position
+        Links {
+          name
+          link
+        }
         createdAt
         updatedAt
       }

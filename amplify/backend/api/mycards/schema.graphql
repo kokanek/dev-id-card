@@ -1,5 +1,14 @@
 type Card @model {
   id: ID!
   name: String!
+  userId: String!
   description: String
+  tags: [String]
+  position: String
+  Links: [Social]
+}
+
+type Social {
+  name: String
+  link: String
 }

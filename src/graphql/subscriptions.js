@@ -6,7 +6,14 @@ export const onCreateCard = /* GraphQL */ `
     onCreateCard {
       id
       name
+      userId
       description
+      tags
+      position
+      Links {
+        name
+        link
+      }
       createdAt
       updatedAt
     }
@@ -17,7 +24,14 @@ export const onUpdateCard = /* GraphQL */ `
     onUpdateCard {
       id
       name
+      userId
       description
+      tags
+      position
+      Links {
+        name
+        link
+      }
       createdAt
       updatedAt
     }
@@ -28,7 +42,14 @@ export const onDeleteCard = /* GraphQL */ `
     onDeleteCard {
       id
       name
+      userId
       description
+      tags
+      position
+      Links {
+        name
+        link
+      }
       createdAt
       updatedAt
     }
