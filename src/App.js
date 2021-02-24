@@ -5,6 +5,7 @@ import { Auth, API } from 'aws-amplify';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import { listCards } from './graphql/queries';
 import { createCard as createCardMutation, deleteCard as deleteCardMutation } from './graphql/mutations';
+import { Link } from "react-router-dom";
 
 const initialFormState = { name: '', description: '' }
 
@@ -38,7 +39,7 @@ function App() {
     console.log('reached crete function: ');
     console.log('creting note for user: ', user);
     const cardData = {
-      name: 'Other Coder',
+      name: 'ComScience Simplified',
       userId: user,
       description: 'Coder by day, content creator by night',
       position: 'Tech Lead',
@@ -84,7 +85,7 @@ function App() {
   return (
     <div className="container">
       <div className="App">
-        <div className="emoji"><ion-icon name="heart-outline"></ion-icon><ion-icon name="person"></ion-icon></div>
+        <div className="emoji"><ion-icon name="heart-outline"></ion-icon></div>
         <h1>My Paper Card</h1>
         <button onClick={createNote} style={{marginBottom: 30, marginTop: 30}} className="btn-success">Create Card<ion-icon name="add-circle-outline" ></ion-icon></button>
         {notes.length !== 0 && <div >
@@ -94,7 +95,10 @@ function App() {
               <div key={note.id || note.name} className="cardListItem">
                 <h2 style={{marginBottom: 12, marginTop: 12}}>{note.name}</h2>
                 <p>{note.description}</p>
-                <button onClick={() => deleteNote(note)} className="btn-primary">View Card</button>
+                <Link to={`/view/${note.id}`}>
+                  <button className="btn-primary">View Card</button>
+                </Link>
+                
               </div>
             ))
           }
@@ -112,7 +116,7 @@ function App() {
         /> */}
         
         <hr />
-        <div class="row flex-spaces child-borders">
+        <div class="row flex-right child-borders">
           <label class="paper-btn margin btn-danger" for="modal-1">Sign Out</label>
         </div>
         <input class="modal-state" id="modal-1" type="checkbox" />

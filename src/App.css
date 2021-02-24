@@ -1,3 +1,7 @@
+body {
+  background-color: #cdcdcd;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -7,6 +11,7 @@
 .App {
   text-align: center;
   border: 2px solid grey;
+  background-color: #efefef;
   width: 600px;
 }
 
