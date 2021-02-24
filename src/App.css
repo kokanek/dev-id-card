@@ -33,6 +33,22 @@ body {
   pointer-events: none;
 }
 
+.grid-container {
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 2px dashed grey;
+  padding: 48px;
+}
+
+.grid-item {
+  margin: 16px;
+}
+
+a {
+  background-image: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

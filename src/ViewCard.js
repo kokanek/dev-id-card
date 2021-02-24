@@ -5,6 +5,15 @@ import { API } from 'aws-amplify';
 import { listCards } from './graphql/queries';
 import { useParams } from "react-router-dom";
 
+const logoMapping = {
+  Twitter: "logo-twitter",
+  Linkedin: "logo-linkedin",
+  YouTube: "logo-youtube",
+  Blog: "logo-wordpress",
+  Portfolio: "briefcase",
+  Github: "logo-github"
+}
+
 function ViewCard() {
   const [note, setNote] = useState([]);
   let { cardId } = useParams();
@@ -27,18 +36,21 @@ function ViewCard() {
 
   return (
     <div className="container">
-      <div className="App">
+      <div className="App card">
         {note && <>
-        <div className="emoji"><ion-icon name="person"></ion-icon></div>
-        <h1>{note.name}</h1>
-        <p>{note.description}</p>
-        {/* <div >
-          <div key={note.id || note.name} className="cardListItem">
-            <h2 style={{marginBottom: 12, marginTop: 12}}>{note.name}</h2>
-            <p>{note.description}</p>
-            <button className="btn-primary">View Card</button>
+          <div className="emoji"><ion-icon name="person"></ion-icon></div>
+          <h1 style={{marginBottom: 12, marginTop: 12}}>{note.name}</h1>
+          <p>{note.description}</p>
+          <div class="row flex-spaces">
+            <p>{note && note.tags && note.tags.map(tag => <kbd style={{margin: 4}}>{tag}</kbd>)}</p>
           </div>
-        </div> */}
+          <div class="grid-container">
+            {note && note.Links && note.Links.map(link => 
+              <a class="grid-item border row flex-center padding-small background-primary" href={link.link} target="_blank">
+                <span style={{marginRight: 12}}><ion-icon name={logoMapping[link.name]}></ion-icon></span><span>{link.name}</span>
+              </a>
+            )}
+          </div>
         </>}
         {!note && <p>There is no note created with that identifier!</p>}      
       </div>
