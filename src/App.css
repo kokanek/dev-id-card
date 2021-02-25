@@ -18,7 +18,6 @@ body {
 
 .emoji {
   font-size: 4rem;
-  margin-top: 16px;
 }
 
 .cardListItem {
@@ -40,6 +39,12 @@ body {
   grid-template-columns: repeat(2, 1fr);
   border-top: 2px dashed grey;
   padding: 48px;
+}
+
+.separator {
+  margin-top: 48px;
+  margin-bottom: 48px;
+  border-top: 2px dashed grey;
 }
 
 .grid-item {
