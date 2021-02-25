@@ -64,9 +64,9 @@ function CreateCard() {
   return (
     <div className="container">
       <div className="App card" style={{padding: 24}}>
-        <div className="emoji"><ion-icon name="person"></ion-icon></div>
-        <h1 style={{marginBottom: 12, marginTop: 12}}>Create Note</h1>
-        <p>Let's create your very own paper card!</p>
+        <div className="emoji"><ion-icon name="add-outline"></ion-icon></div>
+        <h1 style={{marginBottom: 12, marginTop: 12}}>Create Card</h1>
+        <p style={{marginTop: 4}}>Let's create your very own paper card!</p>
         <div className="create-form padding">
           <p class="text-primary">Name</p>
           <input

@@ -47,9 +47,18 @@ function App() {
   return (
     <div className="container">
       <div className="App card">
-        <div className="emoji"><ion-icon name="heart-outline"></ion-icon></div>
-        <h1>My Paper Card</h1>
-        <button onClick={createCard} style={{marginBottom: 30, marginTop: 30}} className="btn-success">Create Card<ion-icon name="add-circle-outline" ></ion-icon></button>
+        <div className="emoji">
+          <ion-icon name="heart-outline"></ion-icon>
+          {/* <ion-icon name="newspaper-outline"></ion-icon> */}
+          <ion-icon name="document-outline"></ion-icon>
+        </div>
+        
+        <h1 style={{marginBottom: 4, marginTop: 12}}>Paper Card</h1>
+        <p>Your very own piece of the internet!</p>
+        <div class="row flex-right child-borders">
+          <button onClick={createCard} style={{marginBottom: 30, marginTop: 30}} className="btn-success">Create Card<ion-icon name="add-circle-outline" ></ion-icon></button>
+          <label class="paper-btn margin btn-danger" for="modal-1"><ion-icon name="power-outline"></ion-icon></label>
+        </div>
         {notes.length !== 0 && <div >
           <p>Cards created by you: </p>
           {
@@ -57,10 +66,16 @@ function App() {
               <div key={note.id || note.name} className="cardListItem">
                 <h2 style={{marginBottom: 12, marginTop: 12}}>{note.name}</h2>
                 <p>{note.description}</p>
-                <Link to={`/view/${note.id}`}>
-                  <button className="btn-primary">View Card</button>
-                </Link>
-                
+                <div className="row">
+                  <Link to={`/view/${note.id}`}> 
+                    <label class="paper-btn btn-primary" for="modal-1">
+                      <ion-icon name="open-outline"></ion-icon>
+                    </label>
+                  </Link>
+                  <label class="paper-btn btn-danger" for="modal-1" style={{marginLeft: 16}} onClick={() => deleteNote(note)}>
+                    <ion-icon name="trash-outline"></ion-icon>
+                  </label>
+                </div>
               </div>
             ))
           }
@@ -68,9 +83,7 @@ function App() {
         {notes.length === 0 && <p>You do not have any cards created</p>}
         
         <hr />
-        <div class="row flex-right child-borders">
-          <label class="paper-btn margin btn-danger" for="modal-1">Sign Out</label>
-        </div>
+        <p>Built with 🖤 by kokaneka, powered by Amplify</p>
         <input class="modal-state" id="modal-1" type="checkbox" />
         <div class="modal">
           <label class="modal-bg" for="modal-1"></label>

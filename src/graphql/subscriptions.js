@@ -8,6 +8,7 @@ export const onCreateCard = /* GraphQL */ `
       name
       userId
       description
+      easyLink
       tags
       position
       Links {
@@ -26,6 +27,7 @@ export const onUpdateCard = /* GraphQL */ `
       name
       userId
       description
+      easyLink
       tags
       position
       Links {
@@ -44,6 +46,7 @@ export const onDeleteCard = /* GraphQL */ `
       name
       userId
       description
+      easyLink
       tags
       position
       Links {

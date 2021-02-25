@@ -8,6 +8,7 @@ export const getCard = /* GraphQL */ `
       name
       userId
       description
+      easyLink
       tags
       position
       Links {
@@ -31,6 +32,7 @@ export const listCards = /* GraphQL */ `
         name
         userId
         description
+        easyLink
         tags
         position
         Links {
