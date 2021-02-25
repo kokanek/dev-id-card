@@ -3,6 +3,7 @@ type Card @model {
   name: String!
   userId: String!
   description: String
+  easyLink: String
   tags: [String]
   position: String
   Links: [Social]

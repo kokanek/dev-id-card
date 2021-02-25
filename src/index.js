@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import App from './App';
 import ViewCard from './ViewCard';
+import CreateCard from './CreateCard';
 import reportWebVitals from './reportWebVitals';
 import Amplify from 'aws-amplify';
 import config from './aws-exports';
@@ -25,6 +26,9 @@ ReactDOM.render(
         </Route>
         <Route path="/view/:cardId">
           <ViewCard />
+        </Route>
+        <Route path="/create">
+          <CreateCard />
         </Route>
       </Switch>
     </Router>

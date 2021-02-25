@@ -4,15 +4,14 @@ import './App.css';
 import { Auth, API } from 'aws-amplify';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import { listCards } from './graphql/queries';
-import { createCard as createCardMutation, deleteCard as deleteCardMutation } from './graphql/mutations';
+import { useHistory } from "react-router-dom";
+import { deleteCard as deleteCardMutation } from './graphql/mutations';
 import { Link } from "react-router-dom";
-
-const initialFormState = { name: '', description: '' }
 
 function App() {
   const [notes, setNotes] = useState([]);
-  const [formData, setFormData] = useState(initialFormState);
   const [user, setUser] = useState();
+  const history = useHistory();
 
   useEffect(() => {
     Auth.currentUserInfo()
@@ -35,45 +34,8 @@ function App() {
     setNotes(apiData.data.listCards.items);
   }
 
-  async function createNote() {
-    console.log('reached crete function: ');
-    console.log('creting note for user: ', user);
-    const cardData = {
-      name: 'ComScience Simplified',
-      userId: user,
-      description: 'Coder by day, content creator by night',
-      position: 'Tech Lead',
-      tags: ['javascript','react.js', 'node.js', 'angular'],
-      Links: [
-        {
-          name: 'Twitter',
-          link: 'https://twitter.com/Kokaneka'
-        },
-        {
-          name: 'Linkedin',
-          link: 'https://www.linkedin.com/in/kapeel-kokane-30b81973/'
-        },
-        {
-          name: 'YouTube',
-          link: 'https://bit.ly/CsSimpl'
-        },
-        {
-          name: 'Blog',
-          link: 'https://dev.to/comscience'
-        },
-        {
-          name: 'Portfolio',
-          link: 'http://comscience.now.sh/'
-        },
-        {
-          name: 'Github',
-          link: 'http://github.com/kokanek'
-        },
-      ]
-    }
-    await API.graphql({ query: createCardMutation, variables: { input: cardData } });
-    setNotes([ ...notes, cardData ]);
-    setFormData(initialFormState);
+  async function createCard() {
+    history.push('/create');
   }
 
   async function deleteNote({ id }) {
@@ -84,10 +46,10 @@ function App() {
 
   return (
     <div className="container">
-      <div className="App">
+      <div className="App card">
         <div className="emoji"><ion-icon name="heart-outline"></ion-icon></div>
         <h1>My Paper Card</h1>
-        <button onClick={createNote} style={{marginBottom: 30, marginTop: 30}} className="btn-success">Create Card<ion-icon name="add-circle-outline" ></ion-icon></button>
+        <button onClick={createCard} style={{marginBottom: 30, marginTop: 30}} className="btn-success">Create Card<ion-icon name="add-circle-outline" ></ion-icon></button>
         {notes.length !== 0 && <div >
           <p>Cards created by you: </p>
           {
@@ -104,16 +66,6 @@ function App() {
           }
         </div>}
         {notes.length === 0 && <p>You do not have any cards created</p>}
-        {/* <input
-          onChange={e => setFormData({ ...formData, 'name': e.target.value})}
-          placeholder="Note name"
-          value={formData.name}
-        />
-        <input
-          onChange={e => setFormData({ ...formData, 'description': e.target.value})}
-          placeholder="Note description"
-          value={formData.description}
-        /> */}
         
         <hr />
         <div class="row flex-right child-borders">
