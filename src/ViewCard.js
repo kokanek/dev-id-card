@@ -55,7 +55,8 @@ function ViewCard() {
             )}
           </div>
         </>}
-        {!note && <p>There is no note created with that identifier!</p>}      
+        {!note && <p>There is no note created with that identifier!</p>}     
+        <p>Created using <a href="/" target="_blank"><strong>Paper Card</strong></a></p> 
       </div>
     </div>
   );

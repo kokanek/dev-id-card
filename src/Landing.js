@@ -26,23 +26,23 @@ function LandingPage() {
         <p>Paper card let's you create your very own <strong>digital paper card</strong> with all your <strong>social links</strong> in one place in less than 5 minutes</p>
         
         <div className="separator"></div>
-        <h4 className="text-primary" style={{marginTop: 4, marginBottom: 12}}>Three easy steps!</h4>
+        <h3 className="text-primary" style={{marginTop: 4, marginBottom: 12}}>Three easy steps!</h3>
         
         <div className="landing-assets">
           {/* Step 1 */}
-          <div style={{marginLeft: -20}}>
+          <div style={{alignSelf: 'flex-start'}}>
             <h5 className="text-primary" style={{marginBottom: 24, textAlign: 'left'}}>1. Sign up/Login with your email</h5>
             <img src={step1} alt="sign up or login" style={{width: 300, marginBottom: 24}}/>
           </div>
 
           {/* Step 2 */}
-          <div style={{marginLeft: 40}}>
+          <div style={{alignSelf: 'flex-end'}}>
             <h5 className="text-primary" style={{marginBottom: 24, textAlign: 'left'}}>2. Create your card with social links</h5>
             <img src={step2} alt="create card" style={{width: 300, marginBottom: 24}}/>
           </div>
 
           {/* Step 3 */}
-          <div style={{marginLeft: -20}}>
+          <div style={{alignSelf: 'flex-start'}}>
             <h5 className="text-primary" style={{marginBottom: 24, textAlign: 'left'}}>3. Share your card with the world!</h5>
             <img src={step3} alt="share card" style={{width: 300, marginBottom: 24}}/>
           </div>
