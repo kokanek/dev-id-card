@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '../node_modules/papercss/dist/paper.min.css';
 import './App.css';
+import { useHistory } from "react-router-dom";
 import { Auth, API } from 'aws-amplify';
 import { listCards } from './graphql/queries';
 import { createCard as createCardMutation } from './graphql/mutations';
@@ -53,10 +54,11 @@ const initialLinkState = [
 ];
 
 function CreateCard() {
-  const [error, setError] = useState(['test']);
+  const [error, setError] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
   const [linkData, setLinks] = useState(initialLinkState);
   const [user, setUser] = useState();
+  const history = useHistory();
 
   useEffect(() => {
     Auth.currentUserInfo()
@@ -66,11 +68,11 @@ function CreateCard() {
       })
   }, []);
 
-  async function fetchNoteById(id) {
-    console.log('fetch notes for id: ', id);
+  async function fetchNoteByeasyLink(easyLink) {
+    console.log('fetch notes for id: ', easyLink);
     let filter = {
-      id: {
-        eq: id
+      easyLink: {
+        eq: easyLink
       }
     };
     const apiData = await API.graphql({ query: listCards, variables: { filter: filter} });
@@ -90,10 +92,52 @@ function CreateCard() {
     
     if (formData.name.trim() === '') {
       setError(['username cannot be empty']);
-    } else {
-      setError([]);
+      return;
+    } 
+
+    if (formData.description.trim() == '') {
+      setError(['description cannot be empty']);
+      return;
     }
-    // await API.graphql({ query: createCardMutation, variables: { input: cardData } });
+
+    let tags = formData.tags.trim().split(',');
+    if (tags.length > 4) {
+      setError(['maximum 4 tags allowed']);
+      return;
+    }
+
+    tags = tags.map(tag => tag.trim())
+    
+    for (let tag of tags) {
+      console.log('tag length: ', tag.length);
+      if (tag.length > 15) {
+        setError(['tag length cannot be greater than 15 characters']);
+        return;
+      }
+    }
+
+    const links = linkData.filter(item => item.link.trim() !== '');
+
+    if (links.length < 2) {
+      setError(['provide social links, minimum 2']);
+      return;
+    }
+
+    const cards = await fetchNoteByeasyLink(formData.easyLink);
+
+    if (cards.data.listCards.length > 0) {
+      setError(['easylink already taken up, please change']);
+      return;
+    }
+    
+    setError([]);
+
+    const cardData = {...formData, Links: links};
+    cardData.tags = [...tags];
+    cardData.userId = user;
+    console.log('cardData of the card to be created: ', cardData);
+    await API.graphql({ query: createCardMutation, variables: { input: cardData } });
+    history.goBack();
   }
 
   return (
@@ -142,7 +186,7 @@ function CreateCard() {
 
           <p className="text-primary margin">Social Links</p>
           {linkData && linkData.map(item => 
-            <div className="row margin flex-spaces flex-middle">
+            <div className="row margin flex-spaces flex-middle" key={item.name}>
               <ion-icon name={logoMapper[item.name]} size="large"></ion-icon>
               <input
                 style={{width: '85%'}}

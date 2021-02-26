@@ -67,7 +67,7 @@ function App() {
                 <h2 style={{marginBottom: 12, marginTop: 12}}>{note.name}</h2>
                 <p>{note.description}</p>
                 <div className="row">
-                  <Link to={`/view/${note.id}`}> 
+                  <Link to={`/view/${note.easyLink}`}> 
                     <label class="paper-btn btn-primary" for="modal-1">
                       <ion-icon name="open-outline"></ion-icon>
                     </label>
@@ -83,7 +83,8 @@ function App() {
         {notes.length === 0 && <p>You do not have any cards created</p>}
         
         <hr />
-        <p>Built with 🖤 by kokaneka, powered by Amplify</p>
+        <p>Built with 🖤 by <a href="https://twitter.com/Kokaneka" target="_blank"><strong>kokaneka</strong></a>, 
+          powered by <a href="https://aws.amazon.com/amplify/" target="_blank"></a><strong>Amplify</strong></p>
         <input class="modal-state" id="modal-1" type="checkbox" />
         <div class="modal">
           <label class="modal-bg" for="modal-1"></label>
