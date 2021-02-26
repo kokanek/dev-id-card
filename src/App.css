@@ -25,7 +25,7 @@ body {
   padding: 24px;
   text-align: left;
   border: 2px solid grey;
-  margin: 24px 12px;
+  margin: 24px 36px;
   border-radius: 4px;
 }
 
@@ -48,16 +48,40 @@ body {
   border-top: 2px dashed grey;
 }
 
+.home-separator {
+  margin: 36px;
+  border-top: 2px dashed grey;
+}
+
 .grid-item {
   margin: 16px;
+  padding: 16px;
+  display: flex !important;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
 }
 
 a {
   background-image: none;
 }
 
+a:link, a:visited {
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
 .create-form {
   text-align: left;
+}
+
+.landing-assets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -59,6 +59,9 @@ function App() {
           <button onClick={createCard} style={{marginBottom: 30, marginTop: 30}} className="btn-success">Create Card<ion-icon name="add-circle-outline" ></ion-icon></button>
           <label class="paper-btn margin btn-danger" for="modal-1"><ion-icon name="power-outline"></ion-icon></label>
         </div>
+
+        <div className="home-separator"></div>
+        
         {notes.length !== 0 && <div >
           <p>Cards created by you: </p>
           {
@@ -69,11 +72,11 @@ function App() {
                 <h6 style={{marginBottom: 12, marginTop: 0}}>created: {new Date(note.createdAt).toDateString()}</h6>
                 <div className="row">
                   <Link to={`/view/${note.easyLink}`}> 
-                    <label class="paper-btn btn-primary" for="modal-1">
+                    <label class="paper-btn btn-primary">
                       <ion-icon name="open-outline"></ion-icon>
                     </label>
                   </Link>
-                  <label class="paper-btn btn-danger" for="modal-1" style={{marginLeft: 16}} onClick={() => deleteNote(note)}>
+                  <label class="paper-btn btn-danger" style={{marginLeft: 16}} onClick={() => deleteNote(note)}>
                     <ion-icon name="trash-outline"></ion-icon>
                   </label>
                 </div>
@@ -86,7 +89,7 @@ function App() {
         
         <hr />
         <p>Built with 🖤 by <a href="https://twitter.com/Kokaneka" target="_blank"><strong>kokaneka</strong></a>, 
-          powered by <a href="https://aws.amazon.com/amplify/" target="_blank"></a><strong>Amplify</strong></p>
+          powered by <a href="https://aws.amazon.com/amplify/" target="_blank"><strong>Amplify</strong></a></p>
         <input class="modal-state" id="modal-1" type="checkbox" />
         <div class="modal">
           <label class="modal-bg" for="modal-1"></label>

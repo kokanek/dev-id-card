@@ -49,8 +49,8 @@ function ViewCard() {
           </div>
           <div class="grid-container">
             {note && note.Links && note.Links.map(link => 
-              <a class="grid-item border row flex-center padding-small background-success" href={link.link} target="_blank" key={link.name}>
-                <span style={{marginRight: 12}}><ion-icon name={logoMapping[link.name]}></ion-icon></span><span>{link.name}</span>
+              <a class="grid-item border row background-success" href={link.link} target="_blank" key={link.name}>
+                <span style={{marginRight: 12}}><ion-icon name={logoMapping[link.name]} size='large'></ion-icon></span><span>{link.name}</span>
               </a>
             )}
           </div>
