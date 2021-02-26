@@ -10,14 +10,13 @@ import { Link } from "react-router-dom";
 
 function App() {
   const [notes, setNotes] = useState([]);
-  const [user, setUser] = useState();
+  const [loading, setLoading] = useState();
   const history = useHistory();
 
   useEffect(() => {
+    setLoading(true);
     Auth.currentUserInfo()
       .then(userData => {
-        console.log('userData: ', userData);
-        setUser(userData.id);
         fetchNotes(userData.id);
       })
   }, []);
@@ -32,6 +31,7 @@ function App() {
     const apiData = await API.graphql({ query: listCards, variables: { filter: filter} });
     console.log('api data fetched: ', apiData);
     setNotes(apiData.data.listCards.items);
+    setLoading(false);
   }
 
   async function createCard() {
@@ -64,8 +64,9 @@ function App() {
           {
             notes.map(note => (
               <div key={note.id || note.name} className="cardListItem">
-                <h2 style={{marginBottom: 12, marginTop: 12}}>{note.name}</h2>
-                <p>{note.description}</p>
+                <h2 style={{marginBottom: 0, marginTop: 12}}>{note.name}</h2>
+                <p style={{marginTop: 8}}>{note.description}</p>
+                <h6 style={{marginBottom: 12, marginTop: 0}}>created: {new Date(note.createdAt).toDateString()}</h6>
                 <div className="row">
                   <Link to={`/view/${note.easyLink}`}> 
                     <label class="paper-btn btn-primary" for="modal-1">
@@ -80,7 +81,8 @@ function App() {
             ))
           }
         </div>}
-        {notes.length === 0 && <p>You do not have any cards created</p>}
+        {loading && <p>fetching your cards...</p>}
+        {!loading && notes.length === 0 && <p>You do not have any cards created</p>}
         
         <hr />
         <p>Built with 🖤 by <a href="https://twitter.com/Kokaneka" target="_blank"><strong>kokaneka</strong></a>, 

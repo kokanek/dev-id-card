@@ -7,6 +7,7 @@ import {
   Route
 } from "react-router-dom";
 import App from './App';
+import Landing from './Landing';
 import ViewCard from './ViewCard';
 import CreateCard from './CreateCard';
 import reportWebVitals from './reportWebVitals';
@@ -19,7 +20,7 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route exact path="/">
-          <App />
+          <Landing />
         </Route>
         <Route path="/home">
           <App />
