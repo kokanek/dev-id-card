@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../node_modules/papercss/dist/paper.min.css';
 import './App.css';
 import step1 from './images/step1.svg';
