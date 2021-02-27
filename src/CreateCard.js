@@ -95,8 +95,13 @@ function CreateCard() {
       return;
     } 
 
-    if (formData.description.trim() == '') {
+    if (formData.description.trim() === '') {
       setError(['description cannot be empty']);
+      return;
+    }
+
+    if (formData.position && formData.position.trim().length > 34) {
+      setError(['Job title length exceeded']);
       return;
     }
 

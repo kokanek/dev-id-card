@@ -45,7 +45,7 @@ function ViewCard() {
           </div>
           <h1 style={{marginBottom: 0, marginTop: 12}}>{note.name}</h1>
           <h5 class="text-success" style={{marginTop: 4}}>{note.position}</h5>
-          <p style={{marginBottom: 4}}>{note.description}</p>
+          <p style={{marginBottom: 4, paddingRight: '16px', paddingLeft: '16px'}}>{note.description}</p>
           <div class="row flex-spaces">
             <p>{note && note.tags && note.tags.map((tag, i) => <kbd style={{margin: 4}} key={`${tag}-${i}`}>{tag}</kbd>)}</p>
           </div>
