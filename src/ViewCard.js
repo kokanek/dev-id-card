@@ -10,8 +10,10 @@ const logoMapping = {
   Linkedin: "logo-linkedin",
   YouTube: "logo-youtube",
   Blog: "logo-wordpress",
-  Portfolio: "briefcase",
-  Github: "logo-github"
+  Portfolio: "briefcase-outline",
+  Github: "logo-github",
+  Dribbble: "logo-dribbble",
+  Twitch: "logo-twitch",
 }
 
 function ViewCard() {

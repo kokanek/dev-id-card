@@ -12,7 +12,7 @@ const logoMapper = {
   Linkedin: 'logo-linkedin',
   YouTube: 'logo-youtube',
   Blog: 'logo-wordpress',
-  Portfolio: 'briefcase-outline',
+  Portfolio: 'briefcase',
   Github: 'logo-github',
   Dribbble: 'logo-dribbble',
   Twitch: 'logo-twitch',
